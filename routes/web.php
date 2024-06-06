@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('theme-one.pages.main.index.default');
 });
 
-Route::get('/', function () {
-    return view('pages.main.default');
+Route::get('/show', function () {
+    return view('theme-one.pages.main.show.default');
 });
