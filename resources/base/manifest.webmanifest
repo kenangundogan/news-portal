@@ -1,0 +1,43 @@
+{
+    "lang": "tr",
+    "dir": "ltr",
+    "name": "News Portal",
+    "short_name": "News Portal",
+    "description": "News Portal Description",
+    "icons": [
+        {
+            "src": "/images/manifest/512x512.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/manifest/192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/manifest/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/manifest/mobile.png",
+            "type": "image/png",
+            "sizes": "390x844",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/images/manifest/desktop.png",
+            "type": "image/png",
+            "sizes": "1920x1080",
+            "form_factor": "wide"
+        }
+    ],
+    "scope": "/",
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "theme_color": "#ffffff"
+}
