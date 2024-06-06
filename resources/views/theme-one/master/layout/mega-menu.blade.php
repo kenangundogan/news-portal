@@ -1,6 +1,10 @@
 @php
     $menus = [
         [
+            'name' => 'Tümü',
+            'url' => '/tumu',
+        ],
+        [
             'name' => 'Gündem',
             'url' => '/gundem',
         ],
