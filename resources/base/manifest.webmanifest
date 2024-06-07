@@ -21,20 +21,6 @@
             "sizes": "512x512"
         }
     ],
-    "screenshots": [
-        {
-            "src": "/images/manifest/mobile.png",
-            "type": "image/png",
-            "sizes": "390x844",
-            "form_factor": "narrow"
-        },
-        {
-            "src": "/images/manifest/desktop.png",
-            "type": "image/png",
-            "sizes": "1920x1080",
-            "form_factor": "wide"
-        }
-    ],
     "scope": "/",
     "start_url": "/",
     "background_color": "#ffffff",
