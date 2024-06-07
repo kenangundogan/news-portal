@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 {{-- Title --}}
-<title>title</title>
+<title>CMS</title>
 
 {{-- Description --}}
 <meta name="description" content="Description">
@@ -54,7 +54,7 @@
 <meta property="og:type" content="website">
 
 {{-- App CSS --}}
-@vite('resources/css/theme-one/app.css')
+@vite('resources/css/cms/app.css')
 
 {{-- Preconnect --}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,5 +69,5 @@
 {{-- Font Playfair Display --}}
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-{{-- Font Awesome --}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+{{-- Google Fonts --}}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />

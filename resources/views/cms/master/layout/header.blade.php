@@ -1,6 +1,6 @@
-<header class="sticky z-50 top-0 w-full h-20 bg-white border-b flex items-center justify-between px-12">
-    <a href="/">
-        <img src="{{ asset('images/logo/black/logo.svg') }}" alt="logo" class="h-6">
+<header class="sticky z-50 top-0 w-full h-20 bg-white border-b flex items-center justify-between px-4 md:px-12">
+    <a href="/cms" class="flex items-center gap-2">
+        <img src="{{ asset('images/logo/black/logo.svg') }}" alt="logo" class="h-6"> | <div class="text-3xl">CMS</div>
     </a>
     <div>
         <ul class="flex gap-6 items-center">

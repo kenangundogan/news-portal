@@ -1,0 +1,1 @@
+<td {{ $dataAttributes ?? '' }} data-name="{{ $dataName ?? '' }}" data-validation="{{ $dataValidation ?? '' }}" colspan="{{ $dataColspan ?? '' }}" class="align-baseline p-4 text-left border {{ $class ?? '' }}"><div class="md:max-w-[calc(100vw-250px)] break-words md:break-all">{{ $slot }}</div></td>

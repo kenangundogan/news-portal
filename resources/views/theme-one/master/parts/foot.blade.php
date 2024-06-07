@@ -1,3 +1,3 @@
 {{-- Foot --}}
 {{-- App JS --}}
-@vite('resources/js/app.js')
+@vite('resources/js/theme-one/app.js')
