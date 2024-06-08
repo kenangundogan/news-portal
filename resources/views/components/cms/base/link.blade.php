@@ -5,6 +5,7 @@
     $content = $content ?? '';
     $mission = $mission ?? '';
     $title = $title ?? '';
+    $onclick = $onclick ?? '';
 
     $default = "bg-white hover:bg-gray-100 text-black-500 border";
     $gray = "bg-gray-400 hover:bg-gray-500 text-white border border-transparent";
@@ -45,6 +46,6 @@
     };
 @endphp
 
-<a href="{{ $href }}" id="{{ $id }}" title="{{ $title }}" class="w-auto p-4 inline-block rounded-sm text-center {{ $mission }} {{ $class }}">
+<a href="{{ $href }}" onclick="{{ $onclick }}"  id="{{ $id }}" title="{{ $title }}" class="w-auto p-4 inline-block rounded-sm text-center {{ $mission }} {{ $class }}">
     {{ $content }}
 </a>

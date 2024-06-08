@@ -1,15 +1,6 @@
 @extends('cms.master.default')
 
 @section('content')
-@if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <x-cms.box>
         <x-slot name="head">
             <x-cms.box.head>
