@@ -1,5 +1,5 @@
 @if (!$relatedNews->isEmpty())
-<div data-name="related-news" class="relative bottom-0 left-0 z-50 overflow-hidden w-full">
+<div data-name="related-news" class="relative bottom-0 left-0 z-30 overflow-hidden w-full">
     <div class="relative overflow-hidden bg-white px-4 md:px-12">
         <div class="relative z-20 p-4 text-xl text-center font-bold border-t"> İLGİLİ İÇERİKLER </div>
         <x-swiper class="relative z-20 border-t"
