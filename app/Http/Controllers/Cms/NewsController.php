@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cms;
+use App\Http\Controllers\Controller;
 
 use App\Models\News;
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -22,8 +24,9 @@ class NewsController extends Controller
      */
     public function create()
     {
+        $images = Image::all();
         $categories = Category::all();
-        return view('cms.pages.news.create.default', compact('categories'));
+        return view('cms.pages.news.create.default', compact('images', 'categories'));
     }
 
     /**
@@ -35,6 +38,7 @@ class NewsController extends Controller
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
+            'image_id' => 'required|exists:images,id',
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -55,9 +59,10 @@ class NewsController extends Controller
      */
     public function edit(string $id)
     {
+        $images = Image::all();
         $categories = Category::all();
         $news = News::find($id);
-        return view('cms.pages.news.edit.default', compact('news', 'categories'));
+        return view('cms.pages.news.edit.default', compact('news', 'images', 'categories'));
     }
 
     /**
@@ -67,7 +72,9 @@ class NewsController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'description' => 'required',
             'content' => 'required',
+            'image_id' => 'required|exists:images,id',
             'category_id' => 'required|exists:categories,id',
         ]);
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="md:px-8">
-        @include('theme-one.pages.main.index.widgets.menu')
-        @include('theme-one.pages.main.index.widgets.news')
+        @include('theme-one.pages.main.index.widgets.menu', ['categories' => $categories])
+        @include('theme-one.pages.main.index.widgets.news', ['news' => $news])
     </div>
 @endsection

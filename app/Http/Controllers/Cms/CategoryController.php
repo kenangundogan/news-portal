@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cms;
+use App\Http\Controllers\Controller;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -29,6 +31,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate(['name' => 'required']);
+        $request->validate(['slug' => 'required']);
         Category::create($request->all());
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
@@ -56,6 +59,7 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate(['name' => 'required']);
+        $request->validate(['slug' => 'required']);
         $category = Category::find($id);
         $category->update($request->all());
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');

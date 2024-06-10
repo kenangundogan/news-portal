@@ -6,7 +6,7 @@
 @endphp
 
 <div data-type="box" data-order="{{ $order }}" class="{{ $class }}">
-    <a href="{{ $href }}" target="_blank">
+    <a href="{{ $href }}">
         {{ $slot }}
     </a>
 </div>

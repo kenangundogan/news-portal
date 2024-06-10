@@ -15,7 +15,8 @@
                 <div class="grid md:grid-cols-2 gap-4">
                     <x-cms.base.input type="text" id="title" name="title" value="{{ old('title') }}" label="Title" />
                     <x-cms.base.input type="text" id="description" name="description" value="{{ old('description') }}" label="description" />
-                    <x-cms.base.textarea id="content" name="content" value="{{ old('content') }}" label="Content" />
+                    <x-cms.base.textarea id="content" name="content" value="{{ old('content') }}" label="Content" class="min-h-72" classWrapper="col-start-1 col-end-3" />
+                    <x-cms.base.select id="image_id" name="image_id" label="Images" :options="$images" />
                     <x-cms.base.select id="category_id" name="category_id" label="Category" :options="$categories" />
                     <div>
                         <div class="h-5"></div>

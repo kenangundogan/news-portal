@@ -15,6 +15,7 @@
                 @method('PUT')
                 <div class="grid md:grid-cols-2 gap-4">
                     <x-cms.base.input type="text" id="name" name="name" value="{{ $category->name }}" label="Name" />
+                    <x-cms.base.input type="text" id="slug" name="slug" value="{{ $category->slug }}" label="Slug" />
                     <div>
                         <div class="h-5"></div>
                         <x-cms.base.button type="submit" mission="update" id="update-category" name="update-category" title="Update Category" content="Update" />

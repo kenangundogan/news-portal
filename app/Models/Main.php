@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Main extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'content', 'image_id', 'category_id'];
+    protected $table = 'news';
+
+    protected $fillable = ['title', 'description', 'content', 'category_id'];
+
 
     public function image()
     {
