@@ -12,9 +12,6 @@
             <li class="border-b pb-2">
                 <a href="/" class="hover:text-gray-300">{{ __('Page') }}</a>
             </li>
-            <li class="border-b pb-2">
-                <a href="{{ route('profile.edit') }}" class="hover:text-gray-300">{{ __('Profile') }}</a>
-            </li>
             <li>
                 <x-cms.base.form id="form" name="form" action="{{ route('logout') }}" method="POST">
                     <a href="{{ route('logout') }}" class="hover:text-gray-300" onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Log Out') }}</a>

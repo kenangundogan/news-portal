@@ -5,6 +5,9 @@
     <div>
         <ul class="flex gap-6 items-center">
             <li class="cursor-pointer">
+                <i data-name="profile-open" class="fa-solid fa-user" onclick="location.href='/cms'"></i>
+            </li>
+            <li class="cursor-pointer">
                 <i data-name="search-open" class="fa-solid fa-magnifying-glass"></i>
                 <i data-name="search-close" class="fa-solid fa-xmark text-xl !hidden"></i>
             </li>
