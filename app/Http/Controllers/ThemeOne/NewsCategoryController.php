@@ -48,7 +48,7 @@ class NewsCategoryController extends Controller
         $category = $category->first()->id;
         $news = News::all()->where('category_id', $category);
 
-        return view('theme-one.pages.main.index.default', compact('news', 'categories'));
+        return view('theme-one.pages.main.index.default', compact('news', 'categories', 'categoryName'));
     }
 
     /**

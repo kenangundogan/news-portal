@@ -6,6 +6,7 @@ function openSearchModal() {
     searchModalOpenEvent.classList.add('!hidden');
     searchModalCloseEvent.classList.remove('!hidden');
     searchModal.classList.remove('!hidden');
+    searchModal.querySelector('#search-input').focus();
 }
 
 function closeSearchModal() {

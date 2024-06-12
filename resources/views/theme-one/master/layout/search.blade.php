@@ -4,8 +4,10 @@
             BİRKAÇ KELİME YAZARAK SİZE YARDIMCI OLABİLİRİZ!
         </div>
         <div>
-            <input type="text" name="" id="" placeholder="Ara!" class="w-full p-4 border text-sm outline-none">
-            <button class="w-full border border-black p-4 font-bold cursor-pointer bg-white hover:bg-yellow-300">LİSTELE</button>
+            <x-cms.base.form method="GET" action="{{ route('search') }}">
+                <x-cms.base.input type="text" id="search-input" name="search" placeholder="Ara!" class="w-full p-4 border text-sm outline-none" />
+                <x-cms.base.button type="submit" content="LİSTELE" class="w-full border border-black p-4 font-bold cursor-pointer bg-white hover:bg-yellow-300" />
+            </x-cms.base.form>
         </div>
     </div>
 </div>

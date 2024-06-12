@@ -71,4 +71,18 @@ class NewsController extends Controller
     {
         //
     }
+
+    /**
+     * Search for news.
+     */
+    public function search(Request $request)
+    {
+        $news = News::with('category')
+        ->where('title', 'like', '%' . $request->search . '%')
+        ->get();
+        $categories = Category::all();
+        $categories = Category::all();
+        $categories = $categories->whereIn('id', $news->pluck('category_id'));
+        return view('theme-one.pages.main.index.default', compact('news', 'categories'));
+    }
 }
