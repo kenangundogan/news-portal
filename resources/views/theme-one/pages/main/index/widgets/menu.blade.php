@@ -7,7 +7,7 @@
     }'>
         @foreach ($categories as $category)
             <x-swiper.item class="w-auto">
-                <a href="/news/category/{{ $category->slug }}" class="block p-4 bg-white hover:bg-yellow-300">{{ $category->name }}</a>
+                <a href="/news/category/{{ $category->slug }}" class="block p-4 bg-white hover:bg-black hover:text-white">{{ $category->name }}</a>
             </x-swiper.item>
         @endforeach
     </x-swiper>
