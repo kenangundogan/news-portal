@@ -1,5 +1,5 @@
 <div class="magicGrid relative z-30 w-full flex flex-wrap">
-    @foreach ($news as $item)
+    @foreach ($news as $key => $item)
         @php
             $randomFolderOptions = [
                 [
@@ -24,7 +24,7 @@
             $randomFolder = $randomFolderOptions[array_rand($randomFolderOptions)];
             $slug = Str::slug($item->title);
         @endphp
-        <x-box class="md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-2/12" order="" href="/news/{{ $item->id }}-{{ $slug }}">
+        <x-box class="md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-2/12" order="{{ $key + 1 }}" href="/news/{{ $item->id }}-{{ $slug }}">
             <x-box.body class="{{ $randomFolder['bgcolor'] }}">
                 <x-box.image classwrapper="{{ $randomFolder['class'] }} mb-4" order="">
                     <x-slot name="src">{{ Vite::asset('resources/images/' . $randomFolder['folder'] . '/' . $item->image->name . '.jpg') }}</x-slot>

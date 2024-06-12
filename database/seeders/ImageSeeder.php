@@ -14,12 +14,30 @@ class ImageSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('images')->insert([
-            ['name' => '101', 'url' => '101', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => '102', 'url' => '102', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => '103', 'url' => '103', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => '104', 'url' => '104', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => '105', 'url' => '105', 'created_at' => now(), 'updated_at' => now()],
-        ]);
+        $categoryList = [
+            'history',
+            'children',
+            'fashion',
+            'politics',
+            'culture',
+            'art',
+            'sports',
+            'food',
+            'economy',
+            'automobile',
+            'cinema',
+            'science',
+            'travel',
+            'education',
+            'magazine',
+        ];
+
+        foreach($categoryList as $category) {
+            for ($i = 1; $i < 7; $i++) {
+                DB::table('images')->insert([
+                    ['name' => $category . '-' . $i, 'url' => $category . '-' . $i, 'created_at' => now(), 'updated_at' => now()],
+                ]);
+            }
+        }
     }
 }
