@@ -10,7 +10,7 @@
             <div class="inline-block text-sm mb-2 text-white bg-[#E32C32] py-2 px-4 rounded-full">{{ $news->category->name }}</div>
             <div class="text-3xl md:text-6xl font-bold mb-2 text-white">{{ $news->title }}</div>
             <div class="text-md md:text-xl text-white mb-2">{{ $news->description }}</div>
-            <div class="text-sm text-gray-300">{{ $news->updated_at->format('d/m/Y') }}</div>
+            <div class="text-sm text-gray-300">{{ $news->updated_at->format('d/m/Y - H:i') }}</div>
         </div>
         <x-swiper class="w-full h-full mb-10"
             data-swiper='{

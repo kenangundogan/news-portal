@@ -1,4 +1,4 @@
-<header class="sticky z-50 top-0 w-full h-20 bg-white border-b flex items-center justify-between px-12">
+<header class="sticky z-50 top-0 w-full h-20 bg-white border-b flex items-center justify-between px-6 md:px-12">
     <a href="/">
         <img src="{{ asset('images/logo/black/logo.svg') }}" alt="logo" class="h-6">
     </a>

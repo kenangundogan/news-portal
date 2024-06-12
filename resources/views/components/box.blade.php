@@ -1,7 +1,7 @@
 @php
     $href = $href ?? '#';
     $class = $class ?? '';
-    $class = 'p-4 ' . $class;
+    $class = 'p-4 group ' . $class;
     $order = $order ?? '';
 @endphp
 

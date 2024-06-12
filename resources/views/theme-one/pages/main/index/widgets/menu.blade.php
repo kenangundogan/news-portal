@@ -1,8 +1,7 @@
-<div class="px-4 pt-4">
+<div class="px-2 md:px-8 bg-white">
     <x-swiper class="w-full"
         data-swiper='{
         "slidesPerView": "auto",
-        "spaceBetween": 20,
         "loop": true,
         "freeMode": true
     }'>

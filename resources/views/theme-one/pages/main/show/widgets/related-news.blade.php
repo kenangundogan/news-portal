@@ -8,10 +8,10 @@
             "autoplay": { "delay": 1500, "disableOnInteraction": false }
         }'>
         @foreach ($relatedNews as $news)
-            <x-swiper.item class="w-auto">
+            <x-swiper.item class="w-auto group">
                 <a href="#" class="flex items-center h-32 p-4 overflow-hidden gap-4">
                     <div class="aspect-square w-24 h-24 overflow-hidden">
-                        <img class="transition duration-500 ease-in-out hover:scale-125 hover:rotate-6" src="{{ Vite::asset('resources/images/1x1/'. $news->image->name .'.jpg') }}" alt="{{ $news->title }}">
+                        <img class="transition duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6" src="{{ Vite::asset('resources/images/1x1/'. $news->image->name .'.jpg') }}" alt="{{ $news->title }}">
                     </div>
                     <div class="w-40 overflow-hidden">
                         <div class="text-[12px] text-[#E32C32]">{{ $news->category->name }}</div>

@@ -2,7 +2,7 @@
     $src = $src ?? '';
     $alt = $alt ?? '';
     $class = $class ?? '';
-    $class = 'w-full transition duration-500 ease-in-out hover:scale-125 hover:rotate-6' . $class;
+    $class = 'w-full transition duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6' . $class;
     $classwrapper = $classwrapper ?? '';
     $order = $order ?? '';
 @endphp
