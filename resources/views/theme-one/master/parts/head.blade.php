@@ -10,10 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 {{-- Title --}}
-<title>title</title>
+<title>@yield('title')</title>
 
 {{-- Description --}}
-<meta name="description" content="Description">
+<meta name="description" content="@yield('description')">
 
 {{-- Author --}}
 <meta name="author" content="Author">
@@ -39,16 +39,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="name">
 <meta name="twitter:creator" content="author">
-<meta name="twitter:title" content="title">
-<meta name="twitter:description" content="description">
-<meta name="twitter:image:src" content="{{ asset('images/') }}">
-<meta name="twitter:image:alt" content="title">
+<meta name="twitter:title" content="@yield('title')">
+<meta name="twitter:description" content="@yield('description')">
+<meta name="twitter:image:src" content="@yield('image')">
+<meta name="twitter:image:alt" content="@yield('title')">
 <meta name="twitter:domain" content="{{ url()->current() }}">
 
 {{-- Open Graph --}}
-<meta property="og:title" content="title">
-<meta property="og:description" content="description">
-<meta property="og:image" content="{{ asset('images/') }}">
+<meta property="og:title" content="@yield('title')">
+<meta property="og:description" content="@yield('description')">
+<meta property="og:image" content="@yield('image')">
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:site_name" content="name">
 <meta property="og:type" content="website">

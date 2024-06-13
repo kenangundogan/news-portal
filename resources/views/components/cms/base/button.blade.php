@@ -5,13 +5,6 @@
     $title = $title ?? '';
     $class = $class ?? '';
     $content = $content ?? '';
-    $dataFormId = $dataFormId ?? '';
-    $dataFormType = $dataFormType ?? '';
-    $dataFormTitle = $dataFormTitle ?? '';
-    $dataFormDescription = $dataFormDescription ?? '';
-    $dataFormMethod = $dataFormMethod ?? '';
-    $dataFormAction = $dataFormAction ?? '';
-    $onClick = $onclick ?? '';
     $mission = $mission ?? '';
 
     $default = "bg-white hover:bg-gray-100 text-black-500 border";
@@ -54,20 +47,11 @@
 @endphp
 
 <div class="w-full">
-    {{-- <div class="h-5"></div> --}}
     <button type="{{ $type }}"
         class="w-full p-4 rounded-sm {{ $mission }} {{ $class }}"
         id="{{ $id }}"
         name="{{ $name }}"
-        title="{{ $title }}"
-        data-form-id="{{ $dataFormId }}"
-        data-form-type="{{ $dataFormType }}"
-        data-form-title="{{ $dataFormTitle }}"
-        data-form-description="{{ $dataFormDescription }}"
-        data-form-method="{{ $dataFormMethod }}"
-        data-form-action="{{ $dataFormAction }}"
-        onclick="{{ $onClick }}
-        ">
+        title="{{ $title }}">
         {!! $content !!}
     </button>
 </div>

@@ -44,6 +44,8 @@ class NewsController extends Controller
     {
         $news = News::with('category')->get();
         $news = $news->where('id', $id)->first();
+        $imagePath = 'resources/images/16x9/' . $news->image->name . '.jpg';
+        $news->image_url = $imagePath;
         $relatedNews = News::with('category')->get()->where('category_id', $news->category_id)->where('id', '!=', $id);
         return view('theme-one.pages.main.show.default', compact('news', 'relatedNews'));
     }
