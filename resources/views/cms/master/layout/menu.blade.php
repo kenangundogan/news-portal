@@ -2,4 +2,5 @@
     <x-cms.base.link href="{{ route('images.index') }}" content="{{ __('Images') }}"/>
     <x-cms.base.link href="{{ route('categories.index') }}" content="{{ __('Categories') }}"/>
     <x-cms.base.link href="{{ route('news.index') }}" content="{{ __('News') }}"/>
+    <x-cms.base.link href="{{ route('users.index') }}" content="{{ __('Users') }}"/>
 </div>

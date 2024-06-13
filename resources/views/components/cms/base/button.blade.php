@@ -69,5 +69,5 @@
         onclick="{{ $onClick }}
         ">
         {!! $content !!}
-</button>
+    </button>
 </div>
