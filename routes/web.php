@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // CMS ----------------------------------------------------------------
+use App\Http\Controllers\Cms\UserController as UserController;
 use App\Http\Controllers\Cms\ImageController as CmsImageController;
 use App\Http\Controllers\Cms\CategoryController as CmsCategoryController;
 use App\Http\Controllers\Cms\NewsController as CmsNewsController;
@@ -19,6 +20,16 @@ Route::middleware('auth')->group(function () {
 
     // CMS ----------------------------------------------------------------
 
+    Route::prefix('/cms/users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('users.index');
+        Route::get('/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/', [UserController::class, 'store'])->name('users.store');
+        Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::put('/{user}/updatepassword', [UserController::class, 'updatepassword'])->name('users.updatepassword');
+        Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
 
     Route::get('/cms', function () {
         return view('cms.pages.main.index.default');
