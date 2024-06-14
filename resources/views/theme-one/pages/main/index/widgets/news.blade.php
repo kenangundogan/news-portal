@@ -22,9 +22,8 @@
                 ],
             ];
             $randomFolder = $randomFolderOptions[array_rand($randomFolderOptions)];
-            $slug = Str::slug($item->title);
         @endphp
-        <x-theme-one.box class="w-6/12 md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-2/12" order="{{ $key + 1 }}" href="/news/{{ $item->id }}-{{ $slug }}">
+        <x-theme-one.box class="w-6/12 md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-2/12" order="{{ $key + 1 }}" href="/news/{{ $item->id }}-{{ Str::slug($item->title) }}" title="{{ $item->title }}">
             <x-theme-one.box.body class="{{ $randomFolder['bgcolor'] }}">
                 <x-theme-one.box.image classwrapper="{{ $randomFolder['class'] }} mb-4" order="{{ $key + 1 }}">
                     <x-slot name="src">{{ Vite::asset('resources/images/' . $randomFolder['folder'] . '/' . $item->image->name . '.jpg') }}</x-slot>

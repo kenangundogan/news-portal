@@ -3,6 +3,7 @@
 @section('title', 'News Portal')
 @section('description', 'News Portal is a news portal website that provides the latest news from various categories such as technology, health, sports, and others.')
 @section('image', '')
+@section('main-class', 'bg-gray-50 pb-20')
 
 @section('content')
     @include('theme-one.pages.main.index.widgets.menu', ['categoryName' => $categoryName ?? ''])

@@ -8,7 +8,7 @@
         @includeIf('theme-one.master.layout.header')
         @includeIf('theme-one.master.layout.search')
         @includeIf('theme-one.master.layout.mega-menu')
-        <main class="relative overflow-hidden bg-gray-50">
+        <main class="relative overflow-hidden @yield('main-class')">
             @yield('content')
         </main>
         @includeIf('theme-one.master.layout.back-to-top')

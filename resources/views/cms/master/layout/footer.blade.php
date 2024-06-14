@@ -4,7 +4,7 @@
     <div class="wrapper w-full mb-4">
         <div class="primary h-20 mb-1 flex justify-center bg-white">
             <div class="content w-full px-10 flex justify-between items-center">
-                <span class="text-xs">© 2021 News Portal. All rights reserved.</span>
+                <span class="text-xs">© 2024 News Portal. All rights reserved.</span>
                 <img src="{{ asset('images/logo/black/logo.svg') }}" class="h-4" title="Analysis">
             </div>
         </div>

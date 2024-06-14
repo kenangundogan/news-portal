@@ -7,15 +7,15 @@
                 "slidesPerView": "auto",
                 "autoplay": { "delay": 1500, "disableOnInteraction": false }
             }'>
-            @foreach ($relatedNews as $news)
+            @foreach ($relatedNews as $item)
                 <x-theme-one.swiper.item class="w-auto group">
-                    <a href="#" class="flex items-center h-32 p-4 overflow-hidden gap-4">
+                    <a href="/news/{{ $item->id }}-{{ Str::slug($item->title)}}" title="{{ $item->title }}" class="flex items-center h-32 p-4 overflow-hidden gap-4">
                         <div class="aspect-square w-24 h-24 overflow-hidden">
-                            <img class="transition duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6" src="{{ Vite::asset('resources/images/1x1/'. $news->image->name .'.jpg') }}" alt="{{ $news->title }}">
+                            <img class="transition duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6" src="{{ Vite::asset('resources/images/1x1/'. $item->image->name .'.jpg') }}" alt="{{ $item->title }}">
                         </div>
                         <div class="w-40 overflow-hidden">
-                            <div class="text-[12px] text-[#E32C32]">{{ $news->category->name }}</div>
-                            <div class="text-sm">{{ $news->title }}</div>
+                            <div class="text-[12px] text-[#E32C32]">{{ $item->category->name }}</div>
+                            <div class="text-sm">{{ $item->title }}</div>
                         </div>
                     </a>
                 </x-theme-one.swiper.item>
