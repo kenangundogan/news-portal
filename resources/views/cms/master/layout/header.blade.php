@@ -8,7 +8,7 @@
             <span>Welcome,</span>
             <span class="font-bold">{{ Auth::user()->name }}</span>
         </div>
-        <ul class="flex-col gap-4 absolute right-0 bg-white w-full p-8 shadow-xl hidden group-hover:flex min-w-44">
+        <ul class="flex-col gap-4 absolute right-0 bg-white w-full p-6 shadow-xl hidden group-hover:flex min-w-32">
             <li class="border-b pb-2">
                 <a href="/" class="hover:text-gray-300">{{ __('Page') }}</a>
             </li>
