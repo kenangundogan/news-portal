@@ -44,14 +44,14 @@ Route::middleware('auth')->group(function () {
 
 // Theme One ----------------------------------------------------------------
 
-Route::get('/news/category/{category}', [ThemeOneNewsCategoryController::class, 'show'])
-    ->where('category', '[a-z]+');
 Route::get('/', [ThemeOneNewsController::class, 'index']);
+Route::get('/news/category/{category}', [ThemeOneNewsController::class, 'category'])
+    ->where('category', '[a-z]+');
+Route::get('/search', [ThemeOneNewsController::class, 'search'])->name('search')
+    ->where('category', '[a-z]+');
 Route::get('/news/{id}-{slug}', [ThemeOneNewsController::class, 'show'])
     ->where('id', '[0-9]+')
     ->where('slug', '[a-z0-9-]+');
-Route::get('/search', [ThemeOneNewsController::class, 'search'])->name('search');
-
 
 require __DIR__.'/auth.php';
 

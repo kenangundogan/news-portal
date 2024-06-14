@@ -14,6 +14,7 @@
     $orange = "bg-orange-400 hover:bg-orange-500 text-white border border-transparent";
     $red = "bg-red-400 hover:bg-red-500 text-white border border-transparent";
     $blue = "bg-blue-400 hover:bg-blue-500 text-white border border-transparent";
+    $black = "bg-black hover:bg-gray-500 text-white border border-transparent";
 
     $default = $default;
     $create = $green;
@@ -26,8 +27,7 @@
     $success = $green;
     $error = $red;
     $warning = $yellow;
-    $scanning = $yellow;
-    $export = $green;
+    $entry = $black;
 
     $mission = match ($mission) {
         'create' => $create,
@@ -40,8 +40,7 @@
         'success' => $success,
         'error' => $error,
         'warning' => $warning,
-        'scanning' => $scanning,
-        'export' => $export,
+        'entry' => $entry,
         default => $default,
     };
 @endphp

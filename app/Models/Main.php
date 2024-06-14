@@ -11,7 +11,7 @@ class Main extends Model
 
     protected $table = 'news';
 
-    protected $fillable = ['title', 'description', 'content', 'category_id'];
+    protected $fillable = ['title', 'description', 'content', 'image_id', 'category_id'];
 
 
     public function image()

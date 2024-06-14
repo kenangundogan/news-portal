@@ -14,13 +14,13 @@
             <div class="text-md md:text-xl text-white mb-2">{{ $news->description }}</div>
             <div class="text-sm text-gray-300">{{ $news->updated_at->format('d/m/Y - H:i') }}</div>
         </div>
-        <x-swiper class="w-full h-full mb-10"
+        <x-theme-one.swiper class="w-full h-full mb-10"
             data-swiper='{
                 "centeredSlides": true,
                 "autoplay": { "delay": 2500, "disableOnInteraction": false }
             }'>
-            <x-swiper.item class="bg-cover bg-top bg-fixed" style="background-image: url({{ Vite::asset($news->image_url) }})"/>
-        </x-swiper>
+            <x-theme-one.swiper.item class="bg-cover bg-top bg-fixed" style="background-image: url({{ Vite::asset($news->image_url) }})"/>
+        </x-theme-one.swiper>
     </div>
 
     <div class="max-w-3xl m-auto mb-10 px-4 pb-4">
