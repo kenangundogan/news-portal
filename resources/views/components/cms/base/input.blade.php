@@ -6,7 +6,7 @@
     $label = $label ?? '';
     $placeholder = $placeholder ?? '';
     $message = $message ?? '';
-    $maxlength = $maxlength ?? '';
+    $maxlength = $maxlength ?? '300';
 @endphp
 
 <div class="w-full">

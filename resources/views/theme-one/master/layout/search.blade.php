@@ -4,9 +4,9 @@
             WE CAN HELP YOU WITH JUST A FEW WORDS!
         </div>
         <div>
-            <x-cms.base.form method="GET" action="{{ route('search') }}">
-                <x-cms.base.input type="text" id="search-input" name="search" placeholder="Write a few words!" class="w-full p-4 border text-sm outline-none" />
-                <x-cms.base.button type="submit" content="SEARCH" class="w-full border border-black p-4 font-bold cursor-pointer bg-white hover:bg-yellow-300" />
+            <x-cms.base.form method="GET" action="{{ route('search') }}" id="search-form" name="search-form">
+                <x-cms.base.input type="text" id="search-input" name="search-input" placeholder="Write a few words!" class="w-full p-4 border text-sm outline-none" />
+                <x-cms.base.button type="submit" content="SEARCH" id="search-button" name="search-button" class="w-full border border-black p-4 font-bold cursor-pointer bg-white hover:bg-yellow-300" />
             </x-cms.base.form>
         </div>
     </div>

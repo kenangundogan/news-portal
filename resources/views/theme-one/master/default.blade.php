@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="zxx">
     <head>
         @includeIf('theme-one.master.parts.head')
     </head>
     <body class="font-poppins">
         @includeIf('theme-one.master.layout.header')
-        @includeIf('theme-one.master.layout.search')
+        @include('theme-one.master.layout.search')
         @includeIf('theme-one.master.layout.mega-menu')
         <main class="relative overflow-hidden @yield('main-class')">
             @yield('content')

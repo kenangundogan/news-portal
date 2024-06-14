@@ -11,7 +11,7 @@
             </x-cms.box.head>
         </x-slot>
         <x-slot name="body">
-            <x-cms.base.form id="form" name="form" action="/cms/users" method="POST" autocomplete="off">
+            <x-cms.base.form id="form" name="form" action="/cms/users" method="POST">
                 <div class="grid md:grid-cols-2 gap-4">
                     <x-cms.base.input id="name" name="name" label="Name" value="{{ old('name') }}" placeholder="Name" />
                     <x-cms.base.input id="email" name="email" label="email" value="{{ old('email') }}" placeholder="email" />

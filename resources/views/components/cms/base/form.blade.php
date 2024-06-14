@@ -6,7 +6,7 @@
     $class = $class ?? '';
 @endphp
 
-<form method="{{ $method }}" action="{{ $action }}" id="{{ $id }}" name="{{ $name }}" class="{{ $class }}" novalidate autocomplete="{{ $autocomplete ?? 'on' }}">
+<form method="{{ $method }}" action="{{ $action }}" id="{{ $id }}" name="{{ $name }}" class="{{ $class }}">
     @csrf
     {{ $slot }}
 </form>

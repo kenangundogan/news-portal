@@ -25,7 +25,7 @@
         </div>
 
         <div class="max-w-3xl m-auto mb-10 px-4 pb-4">
-            <p class="block mb-4">{!! $news->content !!}</p>
+            {!! $news->content !!}
         </div>
 
         <div class="relative overflow-hidden mb-10">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="max-w-3xl m-auto mb-10 px-4 pb-4">
-            <p class="block mb-4">{!! $news->content !!}</p>
+            {!! $news->content !!}
         </div>
 
         @include('theme-one.pages.show.widgets.share', ['news' => $news])

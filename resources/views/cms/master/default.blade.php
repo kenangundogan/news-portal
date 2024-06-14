@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="zxx">
     <head>
         @includeIf('cms.master.parts.head')
     </head>
