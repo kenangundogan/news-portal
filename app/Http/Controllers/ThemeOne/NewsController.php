@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -18,7 +19,7 @@ class NewsController extends Controller
         $news = News::with('category')->get();
         $categories = Category::all();
         $categories = $categories->whereIn('id', $news->pluck('category_id'));
-        return view('theme-one.pages.main.index.default', compact('news', 'categories'));
+        return view('theme-one.pages.index.default', compact('news', 'categories'));
     }
 
     /**
@@ -31,7 +32,7 @@ class NewsController extends Controller
         $imagePath = 'resources/images/16x9/' . $news->image->name . '.jpg';
         $news->image_url = $imagePath;
         $relatedNews = News::with('category')->get()->where('category_id', $news->category_id)->where('id', '!=', $id);
-        return view('theme-one.pages.main.show.default', compact('news', 'relatedNews'));
+        return view('theme-one.pages.show.default', compact('news', 'relatedNews'));
     }
 
     /**
@@ -49,7 +50,7 @@ class NewsController extends Controller
         $category = $category->first()->id;
         $news = News::all()->where('category_id', $category);
 
-        return view('theme-one.pages.main.index.default', compact('news', 'categories', 'categoryName'));
+        return view('theme-one.pages.index.default', compact('news', 'categories', 'categoryName'));
     }
 
 
@@ -64,6 +65,18 @@ class NewsController extends Controller
         $categories = Category::all();
         $categories = Category::all();
         $categories = $categories->whereIn('id', $news->pluck('category_id'));
-        return view('theme-one.pages.main.index.default', compact('news', 'categories'));
+        return view('theme-one.pages.index.default', compact('news', 'categories'));
+    }
+
+    /**
+     * Main page.
+     */
+    public function main()
+    {
+        $news = News::all()->take(5);
+        $categories = Category::all()->take(5);
+        $images = Image::all()->take(5);
+        $users = User::all()->take(5);
+        return view('cms.pages.index.default', compact('news', 'categories', 'images', 'users'));
     }
 }

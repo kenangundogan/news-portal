@@ -26,8 +26,6 @@
     $success = $green;
     $error = $red;
     $warning = $yellow;
-    $scanning = $yellow;
-    $export = $green;
 
     $mission = match ($mission) {
         'create' => $create,
@@ -40,8 +38,6 @@
         'success' => $success,
         'error' => $error,
         'warning' => $warning,
-        'scanning' => $scanning,
-        'export' => $export,
         default => $default,
     };
 @endphp

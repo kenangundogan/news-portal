@@ -42,9 +42,9 @@
             <p class="block mb-4">{!! $news->content !!}</p>
         </div>
 
-        @include('theme-one.pages.main.show.widgets.share', ['news' => $news])
+        @include('theme-one.pages.show.widgets.share', ['news' => $news])
 
-        @include('theme-one.pages.main.show.widgets.related-news', ['news' => $news])
+        @include('theme-one.pages.show.widgets.related-news', ['news' => $news])
 
     </div>
 @endsection

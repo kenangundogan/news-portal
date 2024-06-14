@@ -11,7 +11,6 @@ use App\Http\Controllers\Cms\NewsController as CmsNewsController;
 
 // Theme One ----------------------------------------------------------------
 use App\Http\Controllers\ThemeOne\NewsController as ThemeOneNewsController;
-use App\Http\Controllers\ThemeOne\NewsCategoryController as ThemeOneNewsCategoryController;
 
 
 // AUTH ----------------------------------------------------------------
@@ -31,9 +30,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     });
 
-    Route::get('/cms', function () {
-        return view('cms.pages.main.index.default');
-    });
+    Route::get('/cms', [ThemeOneNewsController::class, 'main']);
     Route::resource('cms/images', CmsImageController::class);
     Route::resource('cms/categories', CmsCategoryController::class);
     Route::resource('cms/news', CmsNewsController::class);
