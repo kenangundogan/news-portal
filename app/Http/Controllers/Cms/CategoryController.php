@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->reverse();
         return view('cms.pages.categories.index.default', compact('categories'));
     }
 

@@ -16,8 +16,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::with('category')->get();
-        $categories = Category::all();
+        $news = News::with('category')->get()->reverse();
+        $categories = Category::all()->reverse();
         $categories = $categories->whereIn('id', $news->pluck('category_id'));
         return view('theme-one.pages.index.default', compact('news', 'categories'));
     }

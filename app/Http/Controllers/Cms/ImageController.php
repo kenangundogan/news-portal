@@ -13,7 +13,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
+        $images = Image::all()->reverse();
         return view('cms.pages.images.index.default', compact('images'));
     }
 

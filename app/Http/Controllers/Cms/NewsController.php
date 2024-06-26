@@ -15,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::with('category')->get();
+        $news = News::with('category')->get()->reverse();
         return view('cms.pages.news.index.default', compact('news'));
     }
 
