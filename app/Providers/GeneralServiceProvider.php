@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\News;
 use App\Models\Category;
+use Illuminate\Support\Facades\Schema;
 
 class GeneralServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,13 @@ class GeneralServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (!Schema::hasTable('categories')) {
+            return;
+        }
+
+        if (Category::all()->isEmpty()) {
+            return;
+        }
 
         $categories = Category::all();
         $news = News::all();
