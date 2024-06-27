@@ -32,9 +32,9 @@ class ImageController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image1x1' => 'nullable|image|mimes:jpg|max:2048',
-            'image1x2' => 'nullable|image|mimes:jpg|max:2048',
-            'image16x9' => 'nullable|image|mimes:jpg|max:2048',
+            'image1x1' => 'required|nullable|image|mimes:jpg|max:2048',
+            'image1x2' => 'required|nullable|image|mimes:jpg|max:2048',
+            'image16x9' => 'required|nullable|image|mimes:jpg|max:2048',
         ]);
 
         $data = $request->all();
