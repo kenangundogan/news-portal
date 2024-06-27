@@ -29,7 +29,7 @@ class NewsController extends Controller
     {
         $news = News::with('category')->get();
         $news = $news->where('id', $id)->first();
-        $imagePath = 'resources/images/16x9/' . $news->image->name . '.jpg';
+        $imagePath = 'images/16x9/' . $news->image->image;
         $news->image_url = $imagePath;
         $relatedNews = News::with('category')->get()->where('category_id', $news->category_id)->where('id', '!=', $id);
         return view('theme-one.pages.show.default', compact('news', 'relatedNews'));
@@ -60,9 +60,8 @@ class NewsController extends Controller
     public function search(Request $request)
     {
         $news = News::with('category')
-        ->where('title', 'like', '%' . $request->search . '%')
+        ->where('title', 'like', '%' . $request->searchInput . '%')
         ->get();
-        $categories = Category::all();
         $categories = Category::all();
         $categories = $categories->whereIn('id', $news->pluck('category_id'));
         return view('theme-one.pages.index.default', compact('news', 'categories'));

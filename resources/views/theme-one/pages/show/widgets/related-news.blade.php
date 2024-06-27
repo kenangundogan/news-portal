@@ -11,7 +11,7 @@
                 <x-theme-one.swiper.item class="w-auto group">
                     <a href="/news/{{ $item->id }}-{{ Str::slug($item->title)}}" title="{{ $item->title }}" class="flex items-center h-32 p-4 overflow-hidden gap-4">
                         <div class="aspect-square w-24 h-24 overflow-hidden">
-                            <img class="transition duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6" src="{{ Vite::asset('resources/images/1x1/'. $item->image->name .'.jpg') }}" alt="{{ $item->title }}">
+                            <img class="transition duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6" src="{{ asset('images/1x1/'. $item->image->image) }}" alt="{{ $item->title }}">
                         </div>
                         <div class="w-40 overflow-hidden">
                             <div class="text-[12px] text-[#E32C32]">{{ $item->category->name }}</div>
@@ -21,7 +21,7 @@
                 </x-theme-one.swiper.item>
             @endforeach
         </x-theme-one.swiper>
-        <div style="background-image: url('{{ Vite::asset('resources/images/bg/11.svg') }}')" class="absolute z-10 top-0 left-0 w-full h-full bg-cover bg-center opacity-10"></div>
+        <div style="background-image: url('{{ asset('images/bg/11.svg') }}')" class="absolute z-10 top-0 left-0 w-full h-full bg-cover bg-center opacity-10"></div>
     </div>
 </div>
 @endif

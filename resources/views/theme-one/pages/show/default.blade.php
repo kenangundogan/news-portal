@@ -2,9 +2,8 @@
 
 @section('title', $news->title)
 @section('description', $news->description)
-@section('image', Vite::asset($news->image_url))
+@section('image', asset($news->image_url))
 @section('main-class', 'bg-white')
-
 @section('content')
     <div>
 
@@ -20,7 +19,7 @@
                     "centeredSlides": true,
                     "autoplay": { "delay": 2500, "disableOnInteraction": false }
                 }'>
-                <x-theme-one.swiper.item class="bg-cover bg-top bg-fixed" style="background-image: url({{ Vite::asset($news->image_url) }})"/>
+                <x-theme-one.swiper.item class="bg-cover bg-top bg-fixed" style="background-image: url('{{ asset($news->image_url) }}')"/>
             </x-theme-one.swiper>
         </div>
 
@@ -29,7 +28,7 @@
         </div>
 
         <div class="relative overflow-hidden mb-10">
-            <div class="h-[500px] bg-fixed bg-center bg-cover before:content-[''] before:absolute before:w-full before:h-full before:bg-black/30" style="background-image: url('{{ Vite::asset('resources/images/16x9/' . $news->image->name . '.jpg') }}')">
+            <div class="h-[500px] bg-fixed bg-center bg-cover before:content-[''] before:absolute before:w-full before:h-full before:bg-black/30" style="background-image: url('{{ asset($news->image_url) }}')">
                 <div class="relative z-10 h-full flex items-center justify-center max-w-3xl m-auto">
                     <span class="p-5 text-4xl text-center text-white font-handwriting">
                         {{ $news->title }}
