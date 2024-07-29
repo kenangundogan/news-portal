@@ -75,7 +75,7 @@ class NewsSeeder extends Seeder
             DB::table('news')->insert([
                 'title' => $faker->sentence,
                 'description' => $faker->paragraph(1),
-                'content' => $paragraphs,
+                // 'content' => $paragraphs,
                 'image_id' => $imageID,
                 'category_id' => $categoryMap[$randomCategory],
                 'created_at' => now(),
