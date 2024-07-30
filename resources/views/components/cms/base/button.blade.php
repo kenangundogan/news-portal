@@ -37,6 +37,7 @@
         'show' => $show,
         'list' => $list,
         'add' => $add,
+        'remove' => $delete,
         'success' => $success,
         'error' => $error,
         'warning' => $warning,

@@ -16,7 +16,7 @@
             <option value="0">{{ $placeholder }}</option>
         @endif
         @foreach ($options as $option)
-            <option value="{{ $option->id }}" {{ $selectedId == $option->id ? 'selected' : '' }}>{{ $option->name }}</option>
+            <option value="{{ $option->id }}" {{ $selectedId == $option->id ? 'selected' : '' }}>{{ $option->name ?? $option->type }}</option>
         @endforeach
     </select>
     @error($name)

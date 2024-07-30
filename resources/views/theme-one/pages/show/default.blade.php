@@ -24,7 +24,12 @@
         </div>
 
         <div class="max-w-3xl m-auto mb-10 px-4 pb-4">
-            {!! $news->content !!}
+            @foreach ($news->contents as $content)
+                <div class="mb-4">
+                    <h2 class="text-xl font-bold mb-2">{{ $content->contentType->type }}</h2>
+                    <div>{!! nl2br(e($content->content)) !!}</div>
+                </div>
+            @endforeach
         </div>
 
         <div class="relative overflow-hidden mb-10">
@@ -35,10 +40,6 @@
                     </span>
                 </div>
             </div>
-        </div>
-
-        <div class="max-w-3xl m-auto mb-10 px-4 pb-4">
-            {!! $news->content !!}
         </div>
 
         @include('theme-one.pages.show.widgets.share', ['news' => $news])

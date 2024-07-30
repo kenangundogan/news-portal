@@ -27,11 +27,16 @@ class NewsController extends Controller
      */
     public function show(int $id, string $slug)
     {
-        $news = News::with('category')->get();
-        $news = $news->where('id', $id)->first();
+        $news = News::with(['category', 'image', 'contents.contentType'])->findOrFail($id);
+
         $imagePath = 'images/16x9/' . $news->image->image;
         $news->image_url = $imagePath;
-        $relatedNews = News::with('category')->get()->where('category_id', $news->category_id)->where('id', '!=', $id);
+
+        $relatedNews = News::with('category')
+            ->where('category_id', $news->category_id)
+            ->where('id', '!=', $id)
+            ->take(5)
+            ->get();
         return view('theme-one.pages.show.default', compact('news', 'relatedNews'));
     }
 

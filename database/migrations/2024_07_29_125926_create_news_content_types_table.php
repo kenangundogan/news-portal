@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('news_content_types', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('name');
             $table->timestamps();
         });
     }
