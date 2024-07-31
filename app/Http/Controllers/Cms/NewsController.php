@@ -35,27 +35,42 @@ class NewsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image_id' => 'required|exists:images,id',
-            'category_id' => 'required|exists:categories,id',
-            'contents' => 'required|array',
-            'contents.*.type_id' => 'required|exists:news_content_types,id',
-            'contents.*.content' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'image_id' => 'required|exists:images,id',
+        'category_id' => 'required|exists:categories,id',
+        'contents' => 'required|array',
+        'contents.*.type_id' => 'required|exists:news_content_types,id',
+        'contents.*.content' => 'required_without_all:contents.*.file|nullable|string',
+        'contents.*.file' => 'required_if:contents.*.type_id,3|nullable|file|mimes:jpg,jpeg,png,gif|max:2048',
+    ]);
 
-        $news = News::create($request->only(['title', 'description', 'image_id', 'category_id']));
+    $news = News::create($request->only(['title', 'description', 'image_id', 'category_id']));
 
-        foreach ($request->contents as $content) {
-            $news->contents()->create([
-                    'news_content_type_id' => $content['type_id'],
-                    'content' => $content['content'],
-                ]);
+    foreach ($request->contents as $index => $content) {
+        $contentData = ['news_content_type_id' => $content['type_id']];
+
+        if ($content['type_id'] == 3 && isset($content['file'])) {
+            if ($request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
+                $file = $request->file("contents.$index.file");
+                $time = time();
+                $random = rand(10000, 99999);
+                $fileName = $time . '_' . $news['title'] . '_' . $random . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/other'), $fileName);
+                $contentData['content'] = 'images/other/' . $fileName;
+            }
+        } else {
+            $contentData['content'] = $content['content'];
         }
-        return redirect()->route('news.index')->with('success', 'News created successfully.');
+
+        $news->contents()->create($contentData);
     }
+
+    return redirect()->route('news.index')->with('success', 'News created successfully.');
+}
+
 
     /**
      * Display the specified resource.
@@ -87,25 +102,39 @@ class NewsController extends Controller
             'description' => 'required',
             'image_id' => 'required|exists:images,id',
             'category_id' => 'required|exists:categories,id',
-            'contents' => 'required|array',
-            'contents.*.type_id' => 'required|exists:news_content_types,id',
-            'contents.*.content' => 'required|string',
+            'contents' => 'required|array'
         ]);
 
-        $news = News::find($id);
+        $news = News::findOrFail($id);
         $news->update($request->only(['title', 'description', 'image_id', 'category_id']));
 
+        // Mevcut içerikleri sil ve yeniden ekle
         $news->contents()->delete();
 
-        foreach ($request->contents as $content) {
-            $news->contents()->create([
-                    'news_content_type_id' => $content['type_id'],
-                    'content' => $content['content'],
-                ]);
+        foreach ($request->contents as $index => $content) {
+            $contentData = ['news_content_type_id' => $content['type_id']];
+
+            if (isset($content['file']) && $request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
+                // Yeni dosya yüklenmişse
+                $file = $request->file("contents.$index.file");
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('images/other'), $fileName);
+                $contentData['content'] = 'images/other/' . $fileName;
+            } elseif (isset($content['existing_file'])) {
+                // Dosya yüklenmemişse mevcut dosya yolunu koru
+                $contentData['content'] = $content['existing_file'];
+            } else {
+                // Diğer içerik tipleri için
+                $contentData['content'] = $content['content'];
+            }
+
+            $news->contents()->create($contentData);
         }
 
         return redirect()->route('news.index')->with('success', 'News updated successfully.');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

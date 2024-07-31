@@ -59,23 +59,23 @@
                 let inputHtml = '';
                 switch(type) {
                     case 'text':
-                        inputHtml = `<x-cms.base.input type="text" id="contents[${index}][content]" name="contents[${index}][content]" label="Content" class="form-input"/>`;
+                        inputHtml = `<x-cms.base.input type="text" name="contents[${index}][content]"/>`;
                         break;
                     case 'textarea':
-                        inputHtml = `<x-cms.base.textarea id="contents[${index}][content]" name="contents[${index}][content]" label="Content" class="form-input"/>`;
+                        inputHtml = `<x-cms.base.textarea name="contents[${index}][content]"/>`;
                         break;
                     case 'file':
-                        inputHtml = `<x-cms.base.input type="file" id="contents[${index}][content]" name="contents[${index}][content]" label="Content" class="form-input"/>`;
+                        inputHtml = `<x-cms.base.input type="file" name="contents[${index}][file]"/>`;
                         break;
                     default:
-                        inputHtml = `<x-cms.base.input type="text" id="contents[${index}][content]" name="contents[${index}][content]" label="Content" class="form-input"/>`;
+                        inputHtml = `<x-cms.base.input type="text" name="contents[${index}][content]"/>`;
                 }
                 return inputHtml;
             }
 
             document.getElementById('add-content').addEventListener('click', function () {
                 let selectedOption = document.getElementById('content-type-select').options[document.getElementById('content-type-select').selectedIndex];
-                if (!selectedOption.value) return; // Seçim yapılmamışsa çık
+                if (!selectedOption.value) return;
                 let selectedType = selectedOption.getAttribute('data-type');
                 let selectedTypeId = selectedOption.value;
                 let selectedName = selectedOption.text;
