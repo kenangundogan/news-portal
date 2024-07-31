@@ -15,8 +15,11 @@ class NewsContentTypes extends Seeder
     public function run(): void
     {
         DB::table('news_content_types')->insert([
-            ['name' => 'paragraph', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'image', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Title', 'formelement' => 'input', 'type' => 'text', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Paragraph', 'formelement' => 'textarea', 'type' => 'text', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Image', 'formelement' => 'input', 'type' => 'file', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Youtube Video', 'formelement' => 'input', 'type' => 'url', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Quote', 'formelement' => 'textarea', 'type' => 'text', 'created_at' => now(), 'updated_at' => now()]
         ]);
     }
 }

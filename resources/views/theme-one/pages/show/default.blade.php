@@ -26,8 +26,17 @@
         <div class="max-w-3xl m-auto mb-10 px-4 pb-4">
             @foreach ($news->contents as $content)
                 <div class="mb-4">
-                    <h2 class="text-xl font-bold mb-2">{{ $content->contentType->type }}</h2>
-                    <div>{!! nl2br(e($content->content)) !!}</div>
+                    @if ($content->contentType->name == 'Paragraph')
+                        <p class="mb-4">{!! nl2br(e($content->content)) !!}</p>
+                    @elseif ($content->contentType->name == 'Title')
+                        <h2 class="text-2xl font-bold mb-4">{{ $content->content }}</h2>
+                    @elseif ($content->contentType->name == 'Image')
+                        <img src="{{ asset($content->content) }}" alt="{{ $news->title }}" class="w-full h-auto mb-4">
+                    @elseif ($content->contentType->name == 'Youtube Video')
+                        <iframe src="{{ $content->content }}" title="{{ $news->title }}" class="w-full aspect-video mb-4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    @elseif ($content->contentType->name == 'Quote')
+                        <blockquote class="text-lg text-gray-500 italic border-l-4 border-gray-500 pl-4 mb-5">{{ $content->content }}</blockquote>
+                    @endif
                 </div>
             @endforeach
         </div>

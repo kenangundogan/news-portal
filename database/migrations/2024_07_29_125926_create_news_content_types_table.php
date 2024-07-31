@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('news_content_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('formelement');
+            $table->string('type');
             $table->timestamps();
         });
     }
