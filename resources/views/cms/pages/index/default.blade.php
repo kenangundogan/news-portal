@@ -15,7 +15,13 @@
                         <li>
                             <a href="{{ route('news.edit', $item->id) }}" class="flex gap-4 text-sm">
                                 <div class="font-bold">{{ $item->id }}</div>
-                                <div>{{ $item->title }}</div>
+                                <div class="flex gap-4">
+                                    <img src="images/1x1/{{ $item->image->image }}" alt="{{ $item->image->name }}" class="w-20 h-20"/>
+                                    <div>
+                                        <div class="font-bold">{{ $item->title }}</div>
+                                        <div>{{ $item->description }}</div>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                     </ul>
@@ -57,6 +63,7 @@
                         <li>
                             <a href="{{ route('images.edit', $item->id) }}" class="flex gap-4 text-sm">
                                 <div class="font-bold">{{ $item->id }}</div>
+                                <img src="images/1x1/{{ $item->image }}" alt="{{ $item->name }}" class="w-20 h-20"/>
                                 <div>{{ $item->name }}</div>
                             </a>
                         </li>

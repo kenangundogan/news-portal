@@ -110,23 +110,19 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->update($request->only(['title', 'description', 'image_id', 'category_id']));
 
-        // Mevcut içerikleri sil ve yeniden ekle
         $news->contents()->delete();
 
         foreach ($request->contents as $index => $content) {
             $contentData = ['news_content_type_id' => $content['type_id']];
 
             if (isset($content['file']) && $request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
-                // Yeni dosya yüklenmişse
                 $file = $request->file("contents.$index.file");
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('images/other'), $fileName);
                 $contentData['content'] = 'images/other/' . $fileName;
             } elseif (isset($content['existing_file'])) {
-                // Dosya yüklenmemişse mevcut dosya yolunu koru
                 $contentData['content'] = $content['existing_file'];
             } else {
-                // Diğer içerik tipleri için
                 $contentData['content'] = $content['content'];
             }
 

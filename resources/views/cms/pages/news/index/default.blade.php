@@ -32,7 +32,19 @@
                         <x-cms.table.row>
                             @foreach ($new->toArray() as $key => $value)
                                 @unless(in_array($key, array_merge(['category'])))
+                                    @if ($key == 'image_id')
+                                        <x-cms.table.cell>
+                                            <div>{{ $value }}</div>
+                                            <img src="{{ asset('images/1x1/' . $new->image->image) }}" alt="{{ $new->name }}" class="w-14 h-14"/>
+                                        </x-cms.table.cell>
+                                    @elseif ($key == 'category_id')
+                                        <x-cms.table.cell>
+                                            <div>{{ $value }}</div>
+                                            <div>{{ $new->category->name }}</div>
+                                        </x-cms.table.cell>
+                                    @else
                                     <x-cms.table.cell>{{ $value }}</x-cms.table.cell>
+                                    @endif
                                 @endunless
                             @endforeach
                             <x-cms.table.cell class="md:sticky right-0 bg-gray-50">
