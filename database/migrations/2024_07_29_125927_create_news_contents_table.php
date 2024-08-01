@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('news_id')->constrained('news')->onDelete('cascade');
             $table->foreignId('news_content_type_id')->constrained('news_content_types')->onDelete('cascade');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
