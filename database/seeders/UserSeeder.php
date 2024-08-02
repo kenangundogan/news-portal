@@ -17,6 +17,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Kenan Gündoğan',
             'email' => 'kenan@gundogan.com',
+            'phone' => '1234567890',
+            'city' => 'Istanbul',
+            'country' => 'Türkiye',
+            'image' => 'avatar-1.svg',
             'password' => Hash::make('password'),
         ]);
     }

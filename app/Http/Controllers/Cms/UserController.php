@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
 
@@ -35,14 +36,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'phone' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password' => 'required',
             'password_confirmation' => 'required',
         ]);
-        User::create($request->all());
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+
+        if ($validated['image']) {
+            $image = $validated['image'];
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/avatar');
+            $image->move($destinationPath, $name);
+            $validated['image'] = $name;
+        }
+
+        $validated['password'] = Hash::make($validated['password']);
+
+        $user = User::create($validated);
+
+        dd($validated);
+
+        return redirect("/cms/users")->with('success', 'User created successfully.');
     }
 
     /**
@@ -58,7 +77,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-       $user = User::find($user->id);
+        $user = User::find($user->id);
         return view('cms.pages.users.edit.default', compact('user'));
     }
 
@@ -67,12 +86,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'phone' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($validated['image']) {
+            $image = $validated['image'];
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/avatar');
+            $image->move($destinationPath, $name);
+            $validated['image'] = $name;
+        }
+
         $user = User::find($user->id);
-        $user->update($request->all());
+        $user->update($validated);
         return redirect("/cms/users")->with('success', 'User updated successfully.');
     }
 

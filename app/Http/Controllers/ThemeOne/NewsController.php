@@ -77,10 +77,10 @@ class NewsController extends Controller
      */
     public function main()
     {
-        $news = News::all()->take(5);
-        $categories = Category::all()->take(5);
-        $images = Image::all()->take(5);
-        $users = User::all()->take(5);
+        $news = News::all();
+        $categories = Category::all();
+        $images = Image::all();
+        $users = User::all();
         return view('cms.pages.index.default', compact('news', 'categories', 'images', 'users'));
     }
 }

@@ -26,9 +26,6 @@
                 </x-cms.table.thead>
                 <x-cms.table.tbody>
                     @foreach ($news as $new)
-                        @php
-                            // dd($new->toArray());
-                        @endphp
                         <x-cms.table.row>
                             @foreach ($new->toArray() as $key => $value)
                                 @unless(in_array($key, array_merge(['category'])))

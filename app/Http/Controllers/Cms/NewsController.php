@@ -61,7 +61,7 @@ class NewsController extends Controller
 
             if ($request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
                 $file = $request->file("contents.$index.file");
-                $fileName = time() . '_' . $file->getClientOriginalName();
+                $fileName = time() . '_' . $file->getClientOriginalExtension();
                 $file->move(public_path('images/other'), $fileName);
                 $contentData['content'] = 'images/other/' . $fileName;
             }
@@ -117,7 +117,7 @@ class NewsController extends Controller
 
             if (isset($content['file']) && $request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
                 $file = $request->file("contents.$index.file");
-                $fileName = time() . '_' . $file->getClientOriginalName();
+                $fileName = time() . '_' . $file->getClientOriginalExtension();
                 $file->move(public_path('images/other'), $fileName);
                 $contentData['content'] = 'images/other/' . $fileName;
             } elseif (isset($content['existing_file'])) {
