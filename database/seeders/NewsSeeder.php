@@ -45,6 +45,7 @@ class NewsSeeder extends Seeder
             'magazine',
         ];
 
+
         $categoryMap = [];
         foreach ($categoryList as $key => $category) {
             $categoryMap[$category] = $key + 1;
@@ -56,6 +57,17 @@ class NewsSeeder extends Seeder
             $categoryImages[$category] = range($key * 6 + 1, ($key + 1) * 6);
             shuffle($categoryImages[$category]); // Rastgele sıraya diz
         }
+
+        $news_content_types = [
+            ['name' => 'Title', 'formelement' => 'input', 'type' => 'text'],
+            ['name' => 'Paragraph', 'formelement' => 'textarea', 'type' => 'text'],
+            ['name' => 'Image', 'formelement' => 'input', 'type' => 'file'],
+            ['name' => 'Youtube Video', 'formelement' => 'input', 'type' => 'url'],
+            ['name' => 'Quote', 'formelement' => 'textarea', 'type' => 'text'],
+            ['name' => 'Parallax Image', 'formelement' => 'input', 'type' => 'file'],
+            ['name' => 'Link', 'formelement' => 'input', 'type' => 'url'],
+        ];
+
 
         $totalNews = 90; // Toplamda 90 haber eklemeyi hedefliyoruz
         $insertedNewsCount = 0;
@@ -75,7 +87,6 @@ class NewsSeeder extends Seeder
             DB::table('news')->insert([
                 'title' => $faker->sentence,
                 'description' => $faker->paragraph(1),
-                // 'content' => $paragraphs,
                 'image_id' => $imageID,
                 'category_id' => $categoryMap[$randomCategory],
                 'created_at' => now(),
@@ -83,6 +94,7 @@ class NewsSeeder extends Seeder
             ]);
 
             $insertedNewsCount++;
+
         }
     }
 }
