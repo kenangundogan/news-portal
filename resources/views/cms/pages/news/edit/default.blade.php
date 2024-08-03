@@ -2,7 +2,6 @@
 
 @section('content')
     <x-cms.base.form id="form" name="form" :action="route('news.update', $news->id)" method="POST" enctype="multipart/form-data">
-        @csrf
         @method('PUT')
         <x-cms.box>
             <x-slot name="head">

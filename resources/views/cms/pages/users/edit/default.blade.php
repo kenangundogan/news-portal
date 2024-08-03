@@ -19,10 +19,10 @@
                             <x-cms.base.input id="phone" name="phone" label="Phone" placeholder="phone" value="{{ $user->phone }}" />
                             <x-cms.base.input id="city" name="city" label="City" placeholder="city" value="{{ $user->city }}" />
                             <x-cms.base.input id="country" name="country" label="Country" placeholder="country" value="{{ $user->country }}" />
-                            <x-cms.base.input type="file" id="image" name="image" label="Image" placeholder="image" value="{{ $user->image }}" />
-                                @if($user->image)
-                                    <img src="{{ asset('/images/avatar/'.$user->image) }}" class="w-20 h-20 rounded-full">
-                                @endif
+                            <x-cms.base.input type="file" id="image" name="image" label="Image" placeholder="Image" />
+                            @if($user->image)
+                                <img src="{{ asset('/images/avatar/'.$user->image) }}" class="w-20 h-20 rounded-full">
+                            @endif
                             <x-cms.base.button id="btn-user" type="submit" name="" mission="update" content="{{ __('UPDATE') }}"/>
                         </div>
                     </x-cms.base.form>

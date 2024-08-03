@@ -92,18 +92,19 @@ class UserController extends Controller
             'phone' => 'required',
             'city' => 'required',
             'country' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($validated['image']) {
+        if ($request->hasFile('image')) {
             $image = $validated['image'];
             $name = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/images/avatar');
             $image->move($destinationPath, $name);
             $validated['image'] = $name;
+        } else {
+            $validated['image'] = $user->image;
         }
 
-        $user = User::find($user->id);
         $user->update($validated);
         return redirect("/cms/users")->with('success', 'User updated successfully.');
     }
