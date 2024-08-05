@@ -15,6 +15,7 @@
                         @method('PUT')
                         <div class="grid md:grid-cols-1 gap-4">
                             <x-cms.base.input id="name" name="name" label="Name" placeholder="Url Name" value="{{ $user->name }}" />
+                            <x-cms.base.input id="surname" name="surname" label="Surname" placeholder="surname" value="{{ $user->surname }}" />
                             <x-cms.base.input id="email" name="email" label="Email" placeholder="email" value="{{ $user->email }}" />
                             <x-cms.base.input id="phone" name="phone" label="Phone" placeholder="phone" value="{{ $user->phone }}" />
                             <x-cms.base.input id="city" name="city" label="City" placeholder="city" value="{{ $user->city }}" />
