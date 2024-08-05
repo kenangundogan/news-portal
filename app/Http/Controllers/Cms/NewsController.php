@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Cms;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Image;
@@ -36,43 +36,19 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $newsContentTypes = NewsContentType::all();
-        $fileContentTypes = $newsContentTypes->filter(function ($item) {
-            return $item->type == 'file';
-        });
         $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image_id' => 'required|exists:images,id',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $news = News::create($request->only(['title', 'description', 'image_id', 'category_id']));
 
-        if (!$request->has('contents')) {
-            return redirect()->route('news.index')->with('success', 'News created successfully.');
-        }
-
-        foreach ($request->contents as $index => $content) {
-            $contentData = [
-                'news_content_type_id' => $content['type_id'],
-                'content' => isset($content['content']) ? $content['content'] : ''
-            ];
-
-            if ($request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
-                $file = $request->file("contents.$index.file");
-                $fileName = time() . '_' . $file->getClientOriginalExtension();
-                $file->move(public_path('images/other'), $fileName);
-                $contentData['content'] = 'images/other/' . $fileName;
-            }
-
-            $news->contents()->create($contentData);
-        }
-
+        $this->handleContents($request, $news);
 
         return redirect()->route('news.index')->with('success', 'News created successfully.');
     }
-
 
     /**
      * Display the specified resource.
@@ -104,44 +80,58 @@ class NewsController extends Controller
             'description' => 'required',
             'image_id' => 'required|exists:images,id',
             'category_id' => 'required|exists:categories,id',
-            'contents' => 'required|array'
+            'contents' => 'array',
         ]);
 
         $news = News::findOrFail($id);
         $news->update($request->only(['title', 'description', 'image_id', 'category_id']));
 
         $news->contents()->delete();
-
-        foreach ($request->contents as $index => $content) {
-            $contentData = ['news_content_type_id' => $content['type_id']];
-
-            if (isset($content['file']) && $request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
-                $file = $request->file("contents.$index.file");
-                $fileName = time() . '_' . $file->getClientOriginalExtension();
-                $file->move(public_path('images/other'), $fileName);
-                $contentData['content'] = 'images/other/' . $fileName;
-            } elseif (isset($content['existing_file'])) {
-                $contentData['content'] = $content['existing_file'];
-            } else {
-                $contentData['content'] = $content['content'];
-            }
-
-            $news->contents()->create($contentData);
-        }
+        $this->handleContents($request, $news);
 
         return redirect()->route('news.index')->with('success', 'News updated successfully.');
     }
-
-
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $news = News::find($id);
+        $news = News::findOrFail($id);
         $news->contents()->delete();
         $news->delete();
         return redirect()->route('news.index')->with('success', 'News deleted successfully.');
+    }
+
+    /**
+     * Handle the contents of the news.
+     */
+    protected function handleContents(Request $request, News $news)
+    {
+        if (!$request->has('contents')) {
+            return;
+        }
+
+        foreach ($request->contents as $index => $content) {
+            $contentData = [
+                'news_content_type_id' => $content['type_id'],
+                'content' => isset($content['content']) ? $content['content'] : ''
+            ];
+
+            if ($request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {
+                $file = $request->file("contents.$index.file");
+                $time = time();
+                $randomNumber = rand(100000, 999999);
+                $fileExtension = $file->getClientOriginalExtension();
+                $fileName = "{$time}_{$randomNumber}.{$fileExtension}";
+                $destinationPath = public_path('/images/other');
+                $file->move($destinationPath, $fileName);
+                $contentData['content'] = 'images/other/' . $fileName;
+            } elseif (isset($content['existing_file'])) {
+                $contentData['content'] = $content['existing_file'];
+            }
+
+            $news->contents()->create($contentData);
+        }
     }
 }
