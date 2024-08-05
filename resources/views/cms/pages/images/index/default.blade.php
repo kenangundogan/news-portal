@@ -29,9 +29,23 @@
                         <x-cms.table.row>
                             @foreach ($image->toArray() as $key => $value)
                                 @unless(in_array($key, array_merge([])))
-                                @if ($key == 'image')
+                                @if ($key == 'image1x1')
                                     <x-cms.table.cell>
-                                        <img src="{{ asset('images/1x1/' . $value) }}" alt="{{ $image->name }}" class="w-14 h-14"/>
+                                        <div class="h-16 flex-none relative overflow-hidden bg-gray-50 aspect-1/1">
+                                            <img src="{{ asset('images/1x1/' . $value) }}" alt="{{ $image->name }}">
+                                        </div>
+                                    </x-cms.table.cell>
+                                @elseif ($key == 'image1x2')
+                                    <x-cms.table.cell>
+                                        <div class="h-16 flex-none relative overflow-hidden bg-gray-50 aspect-1/2">
+                                            <img src="{{ asset('images/1x2/' . $value) }}" alt="{{ $image->name }}">
+                                        </div>
+                                    </x-cms.table.cell>
+                                @elseif ($key == 'image16x9')
+                                    <x-cms.table.cell>
+                                        <div class="h-16 flex-none relative overflow-hidden bg-gray-50 aspect-16/9">
+                                            <img src="{{ asset('images/16x9/' . $value) }}" alt="{{ $image->name }}">
+                                        </div>
                                     </x-cms.table.cell>
                                 @else
                                     <x-cms.table.cell>{{ $value }}</x-cms.table.cell>

@@ -32,7 +32,11 @@
                                     @if ($key == 'image_id')
                                         <x-cms.table.cell>
                                             <div>{{ $value }}</div>
-                                            <img src="{{ asset('images/1x1/' . $new->image->image) }}" alt="{{ $new->name }}" class="w-14 h-14"/>
+                                            <div class="flex flex-col gap-1">
+                                                <img src="{{ asset('images/1x1/' . $new->image->image1x1) }}" alt="{{ $new->name }}" class="w-14 aspect-1x1"/>
+                                                <img src="{{ asset('images/16x9/' . $new->image->image16x9) }}" alt="{{ $new->name }}" class="w-14 aspect-16x9"/>
+                                                <img src="{{ asset('images/1x2/' . $new->image->image1x2) }}" alt="{{ $new->name }}" class="w-14 aspect-1x2"/>
+                                            </div>
                                         </x-cms.table.cell>
                                     @elseif ($key == 'category_id')
                                         <x-cms.table.cell>

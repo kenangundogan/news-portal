@@ -29,7 +29,7 @@ class NewsController extends Controller
     {
         $news = News::with(['category', 'image', 'contents.contentType'])->findOrFail($id);
 
-        $imagePath = 'images/16x9/' . $news->image->image;
+        $imagePath = 'images/16x9/' . $news->image->image16x9;
         $news->image_url = $imagePath;
 
         $relatedNews = News::with('category')

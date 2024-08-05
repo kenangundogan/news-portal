@@ -38,7 +38,7 @@ class NewsContent extends Seeder
                         $content = $faker->paragraphs(rand(10, 20), true);
                         break;
                     case 'Image':
-                        $content = 'images/16x9/' . $image->image;
+                        $content = 'images/16x9/' . $image->image16x9;
                         break;
                     case 'Youtube Video':
                         $content = $yotubeUrlList[array_rand($yotubeUrlList)];
@@ -47,7 +47,7 @@ class NewsContent extends Seeder
                         $content = $faker->paragraphs(rand(3, 6), true);
                         break;
                     case 'Parallax Image':
-                        $content = 'images/16x9/' . $image->image;
+                        $content = 'images/16x9/' . $image->image16x9;
                         break;
                     case 'Link':
                         $content = $faker->url;

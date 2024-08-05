@@ -91,41 +91,46 @@ class ImageController extends Controller
     public function update(Request $request, string $id)
     {
 
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'image1x1' => 'nullable|image|mimes:jpg|max:2048',
             'image1x2' => 'nullable|image|mimes:jpg|max:2048',
             'image16x9' => 'nullable|image|mimes:jpg|max:2048',
         ]);
 
-        $data = $request->all();
-
         $image = Image::find($id);
         $time = time();
-        $name = $data['name'];
+        $name = $validated['name'];
         $extension = '.jpg';
         $fileName = $time . '_' . $name . $extension;
-        $data['image'] = $fileName;
+        $validated['image'] = $fileName;
+
+        // dd(
+        //     $image,
+        //     $validated['image'],
+        //     $request->all(), $validated, $request->hasFile('image16x9')
+        // );
+
 
         if ($request->hasFile('image1x1')) {
             $image1x1 = $request->file('image1x1');
             $image1x1->move(public_path('images/1x1'), $fileName);
-            $data['image1x1'] = $fileName;
+            $validated['image1x1'] = $fileName;
         }
 
         if ($request->hasFile('image1x2')) {
             $image1x2 = $request->file('image1x2');
             $image1x2->move(public_path('images/1x2'), $fileName);
-            $data['image1x2'] = $fileName;
+            $validated['image1x2'] = $fileName;
         }
 
         if ($request->hasFile('image16x9')) {
             $image16x9 = $request->file('image16x9');
             $image16x9->move(public_path('images/16x9'), $fileName);
-            $data['image16x9'] = $fileName;
+            $validated['image16x9'] = $fileName;
         }
 
-        $image->update($data);
+        $image->update($validated);
 
         return redirect()->route('images.index')->with('success', 'Image updated successfully.');
     }

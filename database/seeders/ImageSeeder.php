@@ -35,7 +35,14 @@ class ImageSeeder extends Seeder
         foreach($categoryList as $category) {
             for ($i = 1; $i < 7; $i++) {
                 DB::table('images')->insert([
-                    ['name' => $category . '-' . $i, 'image' => $category . '-' . $i . '.jpg' , 'created_at' => now(), 'updated_at' => now()],
+                    [
+                        'name' => $category . '-' . $i,
+                        'image1x1' => $category . '-' . $i . '.jpg' ,
+                        'image1x2' => $category . '-' . $i . '.jpg' ,
+                        'image16x9' => $category . '-' . $i . '.jpg' ,
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ],
                 ]);
             }
         }
