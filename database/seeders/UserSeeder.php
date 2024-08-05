@@ -15,14 +15,30 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'Kenan',
-            'surname' => 'Gündoğan',
-            'email' => 'kenan@gundogan.com',
-            'phone' => '1234567890',
-            'city' => 'Istanbul',
-            'country' => 'Türkiye',
-            'image' => 'avatar-1.svg',
-            'password' => Hash::make('password'),
+            [
+                'name' => 'Kenan',
+                'surname' => 'Gündoğan',
+                'email' => 'kenan@gundogan.com',
+                'phone' => '1234567890',
+                'city' => 'Istanbul',
+                'country' => 'Türkiye',
+                'image' => 'avatar-1.svg',
+                'password' => Hash::make('password'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Admin',
+                'surname' => 'Admin',
+                'email' => 'admin@admin.com',
+                'phone' => '1234567890',
+                'city' => 'Istanbul',
+                'country' => 'Türkiye',
+                'image' => 'avatar-2.svg',
+                'password' => Hash::make('password'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
