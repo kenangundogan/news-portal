@@ -19,7 +19,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all()->reverse();
-
         return view('cms.pages.users.index.default', compact('users'));
     }
 
@@ -39,7 +38,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'surname' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required',
             'city' => 'required',
             'country' => 'required',
@@ -49,18 +48,19 @@ class UserController extends Controller
         ]);
 
         if ($validated['image']) {
-            $image = $validated['image'];
-            $name = time() . '.' . $image->getClientOriginalExtension();
+            $image = $request->file('image');
+            $time = time();
+            $randomNumber = rand(100000, 999999);
+            $fileExtension = $image->getClientOriginalExtension();
+            $fileName = "{$time}_{$randomNumber}.{$fileExtension}";
             $destinationPath = public_path('/images/avatar');
-            $image->move($destinationPath, $name);
-            $validated['image'] = $name;
+            $image->move($destinationPath, $fileName);
+            $validated['image'] = $fileName;
         }
 
         $validated['password'] = Hash::make($validated['password']);
 
-        $user = User::create($validated);
-
-        dd($validated);
+        User::create($validated);
 
         return redirect("/cms/users")->with('success', 'User created successfully.');
     }
@@ -90,7 +90,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'surname' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'phone' => 'required',
             'city' => 'required',
             'country' => 'required',
@@ -98,7 +98,7 @@ class UserController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $image = $validated['image'];
+            $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/images/avatar');
             $image->move($destinationPath, $name);
@@ -113,6 +113,10 @@ class UserController extends Controller
 
     public function updatepassword(Request $request, User $user)
     {
+        $request->validate([
+            'password' => 'required|confirmed',
+        ]);
+
         $user->password = Hash::make($request->input('password'));
         $user->save();
         return redirect("/cms/users/{$user->id}")->with('success', 'Password updated successfully.');
