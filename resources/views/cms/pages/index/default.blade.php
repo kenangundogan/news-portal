@@ -117,7 +117,7 @@
                                     <img src="{{ asset('images/avatar/'.$item->image) }}" alt="{{ $item->name }}" class="w-20 h-20"/>
                                     <div>
                                         <div>{{ $item->name }}</div>
-                                        <div>{{ $item->email }}</div>
+                                        <div class="font-bold">{{ $item->email }}</div>
                                         <div>{{ $item->city }}</div>
                                         <div>{{ $item->country }}</div>
                                     </div>

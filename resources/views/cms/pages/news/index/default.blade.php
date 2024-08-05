@@ -40,7 +40,9 @@
                                             <div>{{ $new->category->name }}</div>
                                         </x-cms.table.cell>
                                     @else
-                                    <x-cms.table.cell>{{ $value }}</x-cms.table.cell>
+                                    <x-cms.table.cell>
+                                        <div class="max-w-52">{{ $value }}</div>
+                                    </x-cms.table.cell>
                                     @endif
                                 @endunless
                             @endforeach

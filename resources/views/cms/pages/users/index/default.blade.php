@@ -30,7 +30,13 @@
                         <x-cms.table.row>
                             @foreach ($user->toArray() as $key => $value)
                                 @unless(in_array($key, array_merge(['email_verified_at'])))
-                                    <x-cms.table.cell>{{ $value ?? '' }}</x-cms.table.cell>
+                                    @if ($key == 'image')
+                                        <x-cms.table.cell>
+                                            <img src="{{ asset('images/avatar/' . $value ?? '') }}" alt="" class="w-14 h-14"/>
+                                        </x-cms.table.cell>
+                                    @else
+                                        <x-cms.table.cell>{{ $value ?? '' }}</x-cms.table.cell>
+                                    @endif
                                 @endunless
                             @endforeach
                             <x-cms.table.cell class="md:sticky right-0 bg-gray-50">
