@@ -11,7 +11,7 @@
 
 <div class="w-full">
     <x-cms.base.label :for="$name" :label="$label" />
-    <select name="{{ $name }}" id="{{ $id }}" class="w-full bg-white border p-4 outline-none border-gray-300 focus:border-black focus:ring-0">
+    <select name="{{ $name }}" id="{{ $id }}" class="w-full bg-white border h-16 p-4 outline-none border-gray-300 focus:border-black focus:ring-0">
         @if($placeholder)
             <option value="0">{{ $placeholder }}</option>
         @endif

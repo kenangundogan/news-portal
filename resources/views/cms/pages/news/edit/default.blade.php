@@ -16,8 +16,8 @@
                 <div class="grid md:grid-cols-2 gap-4 mb-4">
                     <x-cms.base.input type="text" id="title" name="title" value="{{ old('title', $news->title) }}" label="Title" />
                     <x-cms.base.input type="text" id="description" name="description" value="{{ old('description', $news->description) }}" label="Description" />
-                    <x-cms.base.select id="image_id" name="image_id" label="Images" :options="$images" selectedId="{{ old('image_id', $news->image_id) }}" />
-                    <x-cms.base.select id="category_id" name="category_id" label="Category" :options="$categories" selectedId="{{ old('category_id', $news->category_id) }}" />
+                    <x-cms.base.select-custom-images id="image_id" name="image_id" label="Images" :options="$images" selectedId="{{ old('image_id', $news->image_id) }}" />
+                    <x-cms.base.select-custom id="category_id" name="category_id" label="Category" :options="$categories" selectedId="{{ old('category_id', $news->category_id) }}" />
                 </div>
             </x-slot>
         </x-cms.box>
