@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full flex flex-wrap justify-between bg-white">
+    <div class="w-full flex flex-wrap justify-center md:justify-between bg-white">
         <div data-type="userAgent" class="p-3 text-xs text-center"></div>
         <div data-type="phpVersion" class="p-3 text-xs text-center">Laravel
             v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</div>
