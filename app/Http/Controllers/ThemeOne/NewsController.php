@@ -5,8 +5,6 @@ use App\Http\Controllers\Controller;
 
 use App\Models\News;
 use App\Models\Category;
-use App\Models\Image;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -70,17 +68,5 @@ class NewsController extends Controller
         $categories = Category::all();
         $categories = $categories->whereIn('id', $news->pluck('category_id'));
         return view('theme-one.pages.index.default', compact('news', 'categories'));
-    }
-
-    /**
-     * Main page.
-     */
-    public function main()
-    {
-        $news = News::all();
-        $categories = Category::all();
-        $images = Image::all();
-        $users = User::all();
-        return view('cms.pages.index.default', compact('news', 'categories', 'images', 'users'));
     }
 }
