@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // CMS ----------------------------------------------------------------
@@ -8,6 +7,7 @@ use App\Http\Controllers\Cms\UserController as UserController;
 use App\Http\Controllers\Cms\ImageController as CmsImageController;
 use App\Http\Controllers\Cms\CategoryController as CmsCategoryController;
 use App\Http\Controllers\Cms\NewsController as CmsNewsController;
+use App\Http\Controllers\Cms\MainController as CmsMainController;
 
 // Theme One ----------------------------------------------------------------
 use App\Http\Controllers\ThemeOne\NewsController as ThemeOneNewsController;
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     });
 
-    Route::get('/cms', [ThemeOneNewsController::class, 'main']);
+    Route::get('/cms', [CmsMainController::class, 'index']);
     Route::resource('cms/images', CmsImageController::class);
     Route::resource('cms/categories', CmsCategoryController::class);
     Route::resource('cms/news', CmsNewsController::class);
