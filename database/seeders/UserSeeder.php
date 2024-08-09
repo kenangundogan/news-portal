@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Kenan',
                 'surname' => 'Gündoğan',
-                'email' => 'kenan@gundogan.com',
+                'email' => 'kenan@example.com',
                 'phone' => '1234567890',
                 'city' => 'Istanbul',
                 'country' => 'Türkiye',
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'surname' => 'Admin',
-                'email' => 'admin@admin.com',
+                'email' => 'admin@example.com',
                 'phone' => '1234567890',
                 'city' => 'Istanbul',
                 'country' => 'Türkiye',
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Editor',
                 'surname' => 'Editor',
-                'email' => 'editor@editor.com',
+                'email' => 'editor@example.com',
                 'phone' => '1234567890',
                 'city' => 'Istanbul',
                 'country' => 'Türkiye',
