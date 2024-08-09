@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
 // Theme One ----------------------------------------------------------------
 
-Route::get('/', [ThemeOneNewsController::class, 'index']);
+Route::get('/', [ThemeOneNewsController::class, 'index'])->name('home');
 Route::get('/news/category/{category}', [ThemeOneNewsController::class, 'category'])
     ->where('category', '[a-z]+');
 Route::get('/search', [ThemeOneNewsController::class, 'search'])->name('search')
