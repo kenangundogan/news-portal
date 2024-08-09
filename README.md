@@ -59,7 +59,7 @@ MySQL'i kurmak için aşağıdaki adımları izleyebilirsiniz:
 4. **Veritabanı Oluşturun:**
     MySQL komut satırına veya bir MySQL yönetim aracı (örneğin, phpMyAdmin) kullanarak giriş yapın ve proje için bir veritabanı oluşturun:
     ```sql
-    CREATE DATABASE laravel;
+    CREATE DATABASE newsportal;
     ```
 
 ### Node.js ve NPM Kurulumu
