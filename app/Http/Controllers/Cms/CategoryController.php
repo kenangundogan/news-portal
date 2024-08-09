@@ -40,6 +40,14 @@ class CategoryController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return abort(404);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)

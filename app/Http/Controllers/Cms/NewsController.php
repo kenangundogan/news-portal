@@ -51,6 +51,14 @@ class NewsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return abort(404);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
@@ -107,7 +115,7 @@ class NewsController extends Controller
         foreach ($request->contents as $index => $content) {
             $contentData = [
                 'news_content_type_id' => $content['type_id'],
-                'content' => isset($content['content']) ? $content['content'] : ''
+                'content' => isset($content['content']) ? $content['content'] : '',
             ];
 
             if ($request->hasFile("contents.$index.file") && $request->file("contents.$index.file")->isValid()) {

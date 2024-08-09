@@ -62,7 +62,15 @@ class UserController extends Controller
 
         User::create($validated);
 
-        return redirect("/cms/users")->with('success', 'User created successfully.');
+        return redirect('/cms/users')->with('success', 'User created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return abort(404);
     }
 
     /**
@@ -100,7 +108,7 @@ class UserController extends Controller
         }
 
         $user->update($validated);
-        return redirect("/cms/users")->with('success', 'User updated successfully.');
+        return redirect('/cms/users')->with('success', 'User updated successfully.');
     }
 
     public function updatepassword(Request $request, User $user)
@@ -123,5 +131,4 @@ class UserController extends Controller
 
         return redirect('/cms/users')->with('success', 'User deleted successfully.');
     }
-
 }
